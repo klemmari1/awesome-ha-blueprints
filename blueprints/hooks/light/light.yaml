@@ -130,7 +130,7 @@ blueprint:
     force_brightness:
       name: (Optional) Force brightness value at turn on
       description: Force brightness to the "On brightness" input value, when the light is being turned on.
-      default: false
+      default: "off"
       selector:
         boolean:
     on_brightness:
@@ -147,13 +147,13 @@ blueprint:
     smooth_power_on:
       name: (Optional) Smooth power on
       description: Force the light to turn on at minimum brightness when a brightness up command (single or continuous) is triggered and light is off.
-      default: true
+      default: "on"
       selector:
         boolean:
     smooth_power_off:
       name: (Optional) Smooth power off
       description: Allow a brightness down command (single or continuous) to turn off the light when at minimum brightness. Disabling this will prevent the light from being turned off by brightness down commands.
-      default: true
+      default: "on"
       selector:
         boolean:
 # Automation schema

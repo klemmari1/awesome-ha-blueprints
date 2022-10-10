@@ -149,7 +149,7 @@ blueprint:
     button_left_long_loop:
       name: (Optional) Left button long press - loop until release
       description: Loop the left button action until the button is released.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_left_long_max_loop_repeats:
@@ -167,7 +167,7 @@ blueprint:
     button_right_long_loop:
       name: (Optional) Right button long press - loop until release
       description: Loop the right button action until the button is released.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_right_long_max_loop_repeats:
@@ -185,7 +185,7 @@ blueprint:
     button_up_long_loop:
       name: (Optional) Up button long press - loop until release
       description: Loop the up button action until the button is released.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_up_long_max_loop_repeats:
@@ -203,7 +203,7 @@ blueprint:
     button_down_long_loop:
       name: (Optional) Down button long press - loop until release
       description: Loop the down button action until the button is released.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_down_long_max_loop_repeats:
@@ -222,25 +222,25 @@ blueprint:
     button_left_double_press:
       name: (Optional) Expose left button double press event
       description: Choose whether or not to expose the virtual double press event for the left button. Turn this on if you are providing an action for the left button double press event.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_right_double_press:
       name: (Optional) Expose right button double press event
       description: Choose whether or not to expose the virtual double press event for the right button. Turn this on if you are providing an action for the right button double press event.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_up_double_press:
       name: (Optional) Expose up button double press event
       description: Choose whether or not to expose the virtual double press event for the up button. Turn this on if you are providing an action for the up button double press event.
-      default: false
+      default: "off"
       selector:
         boolean:
     button_down_double_press:
       name: (Optional) Expose down button double press event
       description: Choose whether or not to expose the virtual double press event for the down button. Turn this on if you are providing an action for the down button double press event.
-      default: false
+      default: "off"
       selector:
         boolean:
     # helpers used to properly recognize the remote button events
