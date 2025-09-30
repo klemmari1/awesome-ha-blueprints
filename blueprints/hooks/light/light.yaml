@@ -430,7 +430,7 @@ actions:
                       brightness: !input on_brightness
                       transition: '{{ light_transition / 1000 }}'
             default:
-              - service: light.toggle
+              - action: light.toggle
                 entity_id: '{{ light }}'
                 data:
                   transition: '{{ light_transition / 1000 }}'
