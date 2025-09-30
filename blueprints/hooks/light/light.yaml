@@ -64,7 +64,6 @@ blueprint:
             - Xiaomi WXCJKG13LM Aqara Opple 6 button remote
             - Xiaomi WXCJKG13LM Aqara Opple 6 button remote (#2)
             - Xiaomi WXCJKG13LM Aqara Opple 6 button remote (#3)
-            - Xiaomi WXKG11LM Aqara Wireless Switch Mini
             - Xiaomi WXKG01LM Mi Wireless Switch
     light_color_mode:
       name: (Optional) Light color mode
