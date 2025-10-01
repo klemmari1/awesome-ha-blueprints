@@ -439,13 +439,15 @@ condition:
   - >-
     {%- set trigger_action -%}
     {%- if integration_id == "zigbee2mqtt" -%}
-    {{ trigger.event.data.new_state.state }}
+      {{ trigger.event.data.new_state.state }}
     {%- elif integration_id == "deconz" -%}
-    {{ trigger.event.data.event }}
+      {{ trigger.event.data.event }}
     {%- elif integration_id == "zha" -%}
-    {{ trigger.event.data.command }}
-    {{"_" if trigger.event.data.args|length > 0}}
-    {{ trigger.event.data.args|join("_") }}
+      {{ trigger.event.data.get("command", "") }}
+      {%- set args = trigger.event.data.get("args", []) -%}
+      {%- if args|length > 0 -%}
+        _{{ args|join("_") }}
+      {%- endif -%}
     {%- endif -%}
     {%- endset -%}
     {{ trigger_action not in ["","None"] }}
@@ -456,11 +458,15 @@ action:
 - variables:
     trigger_action: >-
       {%- if integration_id == "zigbee2mqtt" -%}
-      {{ trigger.event.data.new_state.state }}
+        {{ trigger.event.data.new_state.state }}
       {%- elif integration_id == "deconz" -%}
-      {{ trigger.event.data.event }}
+        {{ trigger.event.data.event }}
       {%- elif integration_id == "zha" -%}
-      {{ trigger.event.data.command }}{{"_" if trigger.event.data.args|length > 0}}{{ trigger.event.data.args|join("_") }}
+        {{ trigger.event.data.get("command", "") }}
+        {%- set args = trigger.event.data.get("args", []) -%}
+        {%- if args|length > 0 -%}
+          _{{ args|join("_") }}
+        {%- endif -%}
       {%- endif -%}
     trigger_delta: '{{ (as_timestamp(now()) - ((states(helper_last_controller_event) | from_json).timestamp
       if helper_last_controller_event is not none and (states(helper_last_controller_event) |
