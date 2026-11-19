@@ -13,7 +13,7 @@ blueprint:
 
     ## More Info
 
-    ℹ️ Version 2026.11.19
+    ℹ️ Version 2026.11.20
     📝 [Changelog](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e2001_e2002/#changelog)
     📕 Full documentation regarding this blueprint is available [here](https://epmatt.github.io/awesome-ha-blueprints/docs/blueprints/controllers/ikea_e2001_e2002).
 
@@ -446,7 +446,7 @@ conditions:
         {%- elif integration_id == "deconz" -%}
         {{ trigger.event.data.event }}
         {%- elif integration_id == "zha" -%}
-        {{ trigger.event.data.command }}{{"_" if trigger.event.data.args|length > 0}}{{ trigger.event.data.args|join("_") }}
+        {{ trigger.event.data.get("command", "") }}{{"_" if trigger.event.data.get("args", [])|length > 0}}{{ trigger.event.data.get("args", [])|join("_") }}
         {%- endif -%}
         {%- endset -%}
         {{ trigger_action not in ["","None","unknown"] }}
@@ -465,7 +465,7 @@ actions:
         {%- elif integration_id == "deconz" -%}
         {{ trigger.event.data.event }}
         {%- elif integration_id == "zha" -%}
-        {{ trigger.event.data.command }}{{"_" if trigger.event.data.args|length > 0}}{{ trigger.event.data.args|join("_") }}
+        {{ trigger.event.data.get("command", "") }}{{"_" if trigger.event.data.get("args", [])|length > 0}}{{ trigger.event.data.get("args", [])|join("_") }}
         {%- endif -%}
       deserialized_state: '{{ (states(helper_last_controller_event) | from_json) if helper_last_controller_event is not none and (states(helper_last_controller_event) | regex_match("^\{\s*?((\"a\":\s*?\".*\"|\"t\":\s*?\d+\.\d+)(,\s*?)?){2}\s*?\}$")) else {} }}'
       trigger_delta: '{{ (as_timestamp(now()) - (deserialized_state.t | default(0))) * 1000 }}'
